@@ -84,50 +84,41 @@ import random
 
 run = 'y'
 while run == 'y':
-    dice_type = input("Please select the dice you'd like to roll. 20 for D20, 10 for D10, and so on...  ")
+    dice_type = input("Please indicate the dice you'd like to roll. 20 for D20, 10 for D10, and so on...  ")
     print(" ")
+    dice_quantity = input("Please indicate how many of this dice type you'd like to roll. A number between 1 and INFINITY!")
     mod = input("Please enter any modifier for this roll. (0 for no mod, max mod 20)  ")
     print(" ")
     try:
         dice_type = int(dice_type)
         mod = int(mod)
-        result = random.randint(1,dice_type)
+        dice_quantity = int(dice_quantity)
+        print(" ")
+        print("------------RESULTS------------")
+        print(" ")
+        dice_list = []
+        for dice in range(dice_quantity):
+            result = random.randint(1,dice_type)
+            dice_list.append(result)
         accepted_dice_types = [20, 12, 10, 8, 6, 4]
-        if dice_type in accepted_dice_types and result == 20:
-            print(" ")
-            print("------------RESULTS------------")
-            print(" ")
-            print("WOAHHH BUDDY! THAT'S A CRITICAL HIT!")
-            print(f"You rolled {result} + {mod} = {result + mod}")
-            print(" ")
-            run = input("Would you like to roll again? y for yes, n for no:  ")
-        elif dice_type in accepted_dice_types and result == 1:
-            print(" ")
-            print("------------RESULTS------------")
-            print(" ")
-            print("Aw shit. That's a NAT ONE.")
-            print(f"You rolled {result} + {mod} = {result + mod}")
-            print(" ")
-            print("-------------------------------")
-            run = input("Would you like to roll again? y for yes, n for no:  ")      
-        elif dice_type in accepted_dice_types:
-            print(" ")
-            print("------------RESULTS------------")
-            print(" ")
-            print(f"You rolled {result} + {mod} = {result + mod}")
-            print(" ")
-            print("-------------------------------")
-            run = input("Would you like to roll again? y for yes, n for no:  ")
-        else:
-            print(" ")
-            print("------------RESULTS------------")
-            print(" ")
-            print(f"I'm sorry, either {dice_type} or {mod} is not a valid entry. ")
-            print(" ")
-            print("-------------------------------")
-            print("Please enter 20 for D20, 12 for D12, 10 for D10, 8 for D8, 6 for D6 or 4 for D4")
-            print("and make sure your modifier is just a number between 0 and 20.")
-            run = input("Would you like to roll again? y for yes, n for no:  ")
+        for dice in dice_list:
+            if dice_type in accepted_dice_types and dice == 20:
+                print("WOAHHH BUDDY! THAT'S A CRITICAL HIT!")
+                print(f"You rolled {dice} + {mod} = {dice + mod}")
+                print(" ")
+            elif dice_type in accepted_dice_types and dice == 1:
+                print("Aw shit. That's a NAT ONE.")
+                print(f"You rolled {dice} + {mod} = {dice + mod}")
+            elif dice_type in accepted_dice_types:
+                print(f"You rolled {dice} + {mod} = {dice + mod}")
+            else:
+                print(f"I'm sorry, either {dice_type} or {mod} is not a valid entry. ")
+                print('')
+                print("Please enter 20 for D20, 12 for D12, 10 for D10, 8 for D8, 6 for D6 or 4 for D4")
+                print("and make sure your modifier is just a number between 0 and 20.")
+        print(" ")
+        print("-------------------------------")   
+        run = input("Would you like to roll again? y for yes, n for no:  ") 
     except ValueError:
         print(" ")
         print("------------RESULTS------------")
@@ -138,3 +129,5 @@ while run == 'y':
         print("Please enter 20 for D20, 12 for D12, 10 for D10, 8 for D8, 6 for D6 or 4 for D4")
         print("and make sure your modifier is just a number between 0 and 20.")
         run = input("Would you like to roll again? y for yes, n for no:  ")
+
+## ask how many dice they want to roll
