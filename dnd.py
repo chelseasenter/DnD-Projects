@@ -107,8 +107,8 @@ while run == 'y':
                 print(f"You rolled {dice} + {mod} = {dice + mod}")
                 print(" ")
             elif dice_type in accepted_dice_types and dice == 1:
-                print("Aw shit. That's a NAT ONE.")
                 print(f"You rolled {dice} + {mod} = {dice + mod}")
+                print("Aw shit. That's a NAT ONE.")
             elif dice_type in accepted_dice_types:
                 print(f"You rolled {dice} + {mod} = {dice + mod}")
             else:
@@ -116,6 +116,11 @@ while run == 'y':
                 print('')
                 print("Please enter 20 for D20, 12 for D12, 10 for D10, 8 for D8, 6 for D6 or 4 for D4")
                 print("and make sure your modifier is just a number between 0 and 20.")
+        if len(dice_list) > 0:
+            print(" ")
+            print(f"Sum of rolls: {sum(dice_list)}")
+            print(f"Highest Roll: {max(dice_list)}")
+            print(f"Lowest Roll: {min(dice_list)}")
         print(" ")
         print("-------------------------------")   
         run = input("Would you like to roll again? y for yes, n for no:  ") 
